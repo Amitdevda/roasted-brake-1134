@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-up</title>
+    <style>
+        form{
+            border: 1px solid;
+            width: 20%;
+            height: 40vh;
+            margin: auto;
+            display: flex;
+            margin-top: 100px;
+            align-items: center;
+            flex-direction: column;
+            padding: 10px;
+        }
+        form>div>input{
+            width: 100%;
+            height: 35px;
+            margin:auto;
+            
+        }
+        input{
+            margin: auto;
+            width: 100%;
+            height: 35px;
+        
+        }
+        input[type="submit"]{
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 8px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div id="sign-up">
+         <form action="">
+            <h2>Sign-In/Sign-Up</h2>
+            <input id="mob" type="number" placeholder="Enter Mobile Number">
+            <div id="new"></div> 
+            <input id="sub" type="submit" value="Proceed Via OTP">
+           
+           <p>By signing in you agree to our <a href="">T&C</a></p>  
+         </form>
+    </div>
+</body>
+</html>
+<script>
+    let bag=[]
+    form=document.querySelector("form")
+    form.addEventListener("submit",(event) => {
+        event.preventDefault();
+        let x=document.querySelector("#mob").value;
+        
+         if(x.length<=9 || x.length>10){
+             alert("Invalid number")
+         }
+         if(x.length==10){
+
+            let inp =document.createElement("input")
+             inp.setAttribute("type","number")
+             inp.setAttribute("placeholder","OTP Yha daalo")
+             
+             document.querySelector("#new").append(inp)
+
+            
+             let a=Math.floor(Math.random() * 9000 + 1000);
+            alert("Your Otp is "+a)
+            document.querySelector("#sub").value="Confirm OTP"
+            let obj={
+                mob:inp,
+                otp:a,
+            };
+            bag.push(obj)
+            
+         }
+
+    })
+    document.querySelector("#sub").addEventListener(() =>{
+                location.href="frontpg.html"
+            })
+   
+</script>
