@@ -5,8 +5,73 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart</title>
+    <link rel="stylesheet" href="Delicious.css">
+
+    <style>
+       
+        #invi{
+            border: 1px solid;
+            width: 500px;
+            border: 1px solid ;
+            background: #fff;
+            border-radius: 6px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(50%,-50%);
+            text-align: center;
+            padding:0 30px 30px ;
+            visibility: hidden;
+            transition: transform 0.4s; top: 0.4s;
+        }
+        #invi>button{
+            width: 100%;
+            margin-top: 50px;
+            background: rgb(236, 97, 97);
+            padding: 10px;
+            border: 0;
+            outline: none;
+            font-size: 18px;
+            border-radius: 4px;
+            cursor: pointer;
+
+        }
+
+        .open-popup{
+             visibility: visible;
+        }
+
+    </style>
 </head>
 <body>
-    
+    <div id="nav2">
+        <img width="90px" src="img/logo.png"
+            alt="logo">
+        <input id="" type="text" placeholder="Search here">
+        <div>
+            <img src="https://www.licious.in/img/rebranding/category-dropdown-icon.svg" alt="cat">
+            <p>Categories</p>
+        </div>
+        <div>
+            <img src="https://cdn-icons-png.flaticon.com/128/1077/1077012.png" alt="login">
+            <p>Login</p>
+        </div>
+        <div>
+            <img src="https://cdn-icons-png.flaticon.com/128/891/891462.png" alt="Cart">
+            <p>Cart</p>
+        </div>
+    </div>
+    <div id="total">
+        <p>TOTAL PRICE IS MRP :- ₹</p><span>here</span>
+        <button onclick="openPopup()">Chale Jebb khali kare>>></button>
+    </div>
+    <div class="bs">
+
+    </div>
+    <div  id="inv">
+     
+    </div>
+  
 </body>
 </html>
+<script src="cart.js"></script>
