@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maindata</title>
+    <link rel="stylesheet" href="Delicious.css">
+</head>
+<body>
+    <div id="nav1">
+        <div>
+            <a href="">Why Delicious?</a>
+            <span><p>Download App</p></span>
+            <img src="https://cdn-icons-png.flaticon.com/128/2504/2504884.png" alt="apple">
+            <img src="https://cdn-icons-png.flaticon.com/512/2673/2673847.png" alt="android">
+        </div>
+        <div>
+            <a href="About_us.html">About Us</a>
+            |
+            <a href="https://in.linkedin.com/jobs/search?f_C=9471845&location=India">Careers@Delicious</a>
+            |
+            <div class="dropdown">
+                <button class="dropbtn">Contact Us</button>
+                <div class="dropdown-content">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="nav2">
+        <img width="90px" src="img/logo.png"
+            alt="logo">
+        <input oninput="search()" type="text" placeholder="Search here"/>
+        <div>
+            <img src="https://www.licious.in/img/rebranding/category-dropdown-icon.svg" alt="cat">
+            <p>Categories</p>
+        </div>
+        <div>
+            <img src="https://cdn-icons-png.flaticon.com/128/1077/1077012.png" alt="login">
+            <p>Login</p>
+        </div>
+        <div>
+            <img src="https://cdn-icons-png.flaticon.com/128/891/891462.png" alt="Cart">
+            <p>Cart</p>
+        </div>
+    </div>
+    <div class="bs">
+        <!-- append here -->
+    </div>
+</body>
+</html>
+
+<script>
+
+    let bag=[]
+    let car= localStorage.getItem("innercart")||[]
+    url="https://636c099fad62451f9fc24305.mockapi.io/fpd"
+    fetch(url).then((res) => res.json()).then((val) => {bag=val;displayHere(bag)}).catch((err) => alert("err"+err))
+    
+    
+    
+    function search() {
+        
+        let q = document.querySelector("input").value;
+
+        let newdata = bag.filter((elem) => {
+            return elem.name.toLowerCase().includes(q.toLowerCase())
+
+        });
+        displayHere(newdata)
+    }
+    
+
+
+    function displayHere(data) {
+
+document.querySelector(".bs").innerHTML=null;
+
+data.forEach((ele,i) => {
+
+  divs=document.createElement("div")
+
+  idd=document.createElement("p")
+  idd.innerText=ele.idd
+
+  img=document.createElement("img")
+  img.setAttribute("src",ele.img)
+
+  h=document.createElement("h2")
+  h.innerText= ele.name;
+
+  p=document.createElement("p")
+  p.innerText=ele.p;
+
+  indiv=document.createElement("div")
+  indiv.setAttribute("id","indiv")
+  
+  h4=document.createElement("h3")
+  h4.innerText="MRP:-"+ele.rate
+
+  btn=document.createElement("button")
+  btn.innerText="Add To Cart"
+  btn.setAttribute("id","cartbtn")
+  btn.addEventListener("click",() => {
+         cartalert(ele);
+   
+  })
+
+  ekaurdiv=document.createElement("div")
+  ekaurdiv.setAttribute("id","botum")
+
+  i=document.createElement("img")
+  i.setAttribute("src",ele.ico)
+  i.setAttribute("id","scooter")
+    
+  sp=document.createElement("span")
+  sp.innerText="Today in 90 min"
+
+  indiv.append(h4, btn)
+
+  ekaurdiv.append(i,sp)
+
+  divs.append(img,h,p,indiv,ekaurdiv)
+
+  document.querySelector(".bs").append(divs)
+  
+
+})
+ 
+}
+
+function cartalert(ele){
+    let flag=false;
+    for(i=0;i<car.length;i++){
+        if(ele.idd==car[i].idd){
+          flag=true;
+        }
+    }if(flag==true){
+        alert("Item is already in Cart")
+    }else{
+       car.push(ele)
+       localStorage.setItem("innercart",JSON.stringify(car))
+   
+}
+}
+
+
+
+
+</script>

@@ -25,12 +25,16 @@ let url="https://636c099fad62451f9fc24305.mockapi.io/cards";
 fetch(url).then((res) => res.json()).then((out) => display(out)).catch((err) => alert(err))
 
 function display(data){
+   
     data.forEach((e,i) => {
 
         divs=document.createElement("div")
 
         img=document.createElement("img")
         img.setAttribute("src",e.img)
+        img.addEventListener("click",() => {
+            filer(e)
+        })
 
         h3=document.createElement("h3")
         h3.innerText= e.name;
@@ -41,23 +45,22 @@ function display(data){
     })
 }
 
-let bag=[]
-let cartitem=[]
-// Best seller section
 
-url="https://636c099fad62451f9fc24305.mockapi.io/bs"
-fetch(url).then((res) => res.json()).then((out) => { bag=out; displayCard(out)}).catch((err) => alert(err));
+let cartitem=JSON.parse(localStorage.getItem("cartmai"))||[]
+// Best seller section
+url="https://636c099fad62451f9fc24305.mockapi.io/fpd"
+fetch(url).then((res) => res.json()).then((out) => { displayCard(out)}).catch((err) => alert(err));
 
 function displayCard(data) {
 
-    
+    document.querySelector(".bs").innerHTML=null;
  
     data.forEach((ele,i) => {
 
       divs=document.createElement("div")
 
       id=document.createElement("p")
-      id.innerText=ele.id
+      id.innerText=ele.idd
 
       img=document.createElement("img")
       img.setAttribute("src",ele.img)
@@ -66,27 +69,27 @@ function displayCard(data) {
       h.innerText= ele.name;
 
       p=document.createElement("p")
-      p.innerText=ele.para;
+      p.innerText=ele.p;
 
       indiv=document.createElement("div")
       indiv.setAttribute("id","indiv")
       
       h4=document.createElement("h3")
-      h4.innerText=ele.price
+      h4.innerText="MRP:-"+ele.rate
 
       btn=document.createElement("button")
       btn.innerText="Add To Cart"
       btn.setAttribute("id","cartbtn")
       btn.addEventListener("click",() => {
-        cartitem.push(ele)
-        localStorage.setItem("cartmai",JSON.stringify(cartitem))
+        cartalert(ele);
+       
       })
 
       ekaurdiv=document.createElement("div")
       ekaurdiv.setAttribute("id","botum")
 
       i=document.createElement("img")
-      i.setAttribute("src",ele.icon)
+      i.setAttribute("src",ele.ico)
       i.setAttribute("id","scooter")
         
       sp=document.createElement("span")
@@ -98,6 +101,23 @@ function displayCard(data) {
 
       divs.append(img,h,p,indiv,ekaurdiv)
 
-      document.querySelector("#bs").append(divs)
+      document.querySelector(".bs").append(divs)
     })
+    
 }
+
+function cartalert(ele,i){
+    let flag=false;
+    for(i=0;i<cartitem.length;i++){
+        if(ele.idd==cartitem[i].idd){
+          flag=true;
+        }
+    }if(flag==true){
+        alert("Item is already in Cart")
+    }else{
+        cartitem.push(ele)
+        localStorage.setItem("cartmai",JSON.stringify(cartitem))
+    }
+
+}
+
