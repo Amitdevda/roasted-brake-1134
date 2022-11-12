@@ -31,13 +31,13 @@
     width: 200px;
     height: 30px;
 }
-#nav2>div>img{
-    width: 100%;
-}
-#nav2>div{
-    display: flex;
+.cat{
+     display: flex;
 border: 1px solid salmon;
 width: 40px;
+}
+.cat img{
+    width: 100%;
 }
 /* #nav2 img:nth-child(1){
  width: 100px;

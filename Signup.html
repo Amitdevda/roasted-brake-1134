@@ -57,7 +57,8 @@
     form.addEventListener("submit",(event) => {
         event.preventDefault();
         let x=document.querySelector("#mob").value;
-        
+        let flag=true;
+        if(flag==true){
          if(x.length<=9 || x.length>10){
              alert("Invalid number")
          }
@@ -78,14 +79,17 @@
                 otp:a,
             };
             bag.push(obj)
-            
+            flag=false;
          }
-
-    })
-    document.querySelector("#sub").addEventListener(() =>{
+         if(flag==false){
+            document.querySelector("#sub").addEventListener(() =>{
                 location.href="frontpg.html"
             })
    
+         }
+        }
+    })
+    
 
    
 </script>
