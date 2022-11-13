@@ -20,19 +20,11 @@
             |
             <a href="https://in.linkedin.com/jobs/search?f_C=9471845&location=India">Careers@Delicious</a>
             |
-            <div class="dropdown">
-                <button class="dropbtn">Contact Us</button>
-                <div class="dropdown-content">
-                    <a href="#">Link 1</a>
-                    <a href="#">Link 2</a>
-                    <a href="#">Link 3</a>
-                </div>
-            </div>
         </div>
     </div>
     <div id="nav2">
-        <img id="lo" src="img/logo.png"
-            alt="logo">
+      <a href="index.html"><img id="lo" src="img/logo.png"
+            alt="logo"></a>  
         <input id="se" oninput="Search()" type="text" placeholder="Search for any delicious product">
         
 
@@ -59,13 +51,14 @@
 <script>
 
     let bag=[]
-    let car= localStorage.getItem("innercart")||[]
+    car=localStorage.getItem("innercart")
+
     url="https://636c099fad62451f9fc24305.mockapi.io/fpd"
     fetch(url).then((res) => res.json()).then((val) => {bag=val;displayHere(bag)}).catch((err) => alert("err"+err))
     
     
     
-    function search() {
+    function Search() {
         
         let q = document.querySelector("input").value;
 
@@ -135,21 +128,12 @@ data.forEach((ele,i) => {
  localStorage.setItem("bigdata",JSON.stringify(bag))
 }
 
+let cartwo = JSON.parse(localStorage.getItem("innercart")) || []
 function cartalert(ele){
-    let flag=false;
-    for(i=0;i<car.length;i++){
-        if(ele.idd==car[i].idd){
-          flag=true;
-        }
-    }if(flag==true){
-        alert("Item is already in Cart")
-    }else{
-       car.push(ele)
-       localStorage.setItem("innercart",JSON.stringify(car))
-   
+       cartwo.push(ele)
+       localStorage.setItem("innercart",JSON.stringify(cartwo))
 }
-}
-
+console.log(cartwo)
 
 
 
