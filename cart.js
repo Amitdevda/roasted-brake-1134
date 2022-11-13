@@ -4,6 +4,7 @@ let underse=JSON.parse(localStorage.getItem("innercart"))
 let jhola=[...underse,...aagya]
 console.log(jhola)
 
+
 totcart=jhola.reduce((arr,e) =>{
   return arr + Number(e.rate)
 },0)
@@ -80,3 +81,7 @@ function displaycart(jhola) {
 
 
 // })
+
+function openPopup(){
+  document.querySelector("#paypal").style.display="block";
+}
