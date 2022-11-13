@@ -74,20 +74,12 @@
             <a href="About_us.html">About Us</a>
             |
             <a href="https://in.linkedin.com/jobs/search?f_C=9471845&location=India">Careers@Delicious</a>
-            |
-            <div class="dropdown">
-                <button class="dropbtn">Contact Us</button>
-                <div class="dropdown-content">
-                    <a href="#">Link 1</a>
-                    <a href="#">Link 2</a>
-                    <a href="#">Link 3</a>
-                </div>
-            </div>
+            
         </div>
     </div>
     <div id="nav2">
-        <img id="lo" src="img/logo.png"
-            alt="logo">
+     <a href="index.html">  <img id="lo" src="img/logo.png"
+            alt="logo"></a>
         <input id="se" oninput="Search()" type="text" placeholder="Search for any delicious product">
         
 
@@ -107,20 +99,22 @@
     </div>
     <div id="total">
         <p>TOTAL PRICE IS MRP :- ₹</p><span>here</span>
-        <button onclick="openPopup()">Chale Jebb khali kare>>></button>
+        <button onclick="openPopup()">Continue to Payment</button>
     </div>
 
 <div id="paypal">
+    <form>
     <h1>Payment Details</h1>
     <label for="">Enter Name</label>
-    <input type="text" placeholder="Enter Your Name">
+    <input id="naam" type="text" placeholder="Enter Your Name">
     <label for="">Enter Card Number</label>
-    <input type="number" placeholder="Enter Card Number">
+    <input id="num" type="number" placeholder="Enter Card Number" maxlength="3">
     <label for="">Experi Date</label>
-    <input type="text" placeholder="MM/YY">
+    <input id="exp" type="text" placeholder="MM/YY">
     <label for="">CVV</label>
-    <input type="text" placeholder="CVV">
+    <input id="cvv" type="text" placeholder="CVV">
     <input type="submit" value="Proceed to continue">
+</form>
 </div>
 
 

@@ -1,7 +1,7 @@
-let aagya=JSON.parse(localStorage.getItem("cartmai"))
-let underse=JSON.parse(localStorage.getItem("innercart"))
+// let aagya=JSON.parse(localStorage.getItem("cartmai"))
+let jhola=JSON.parse(localStorage.getItem("innercart"))
   
-let jhola=[...underse,...aagya]
+// let jhola=[...underse,...aagya]
 console.log(jhola)
 
 
@@ -39,6 +39,13 @@ function displaycart(jhola) {
     h4=document.createElement("h3")
     h4.innerText="MRP:-"+ele.rate
 
+    let btn = document.createElement("button")
+    btn.innerText="Remove";
+    btn.setAttribute("id","btnn")
+    btn.addEventListener("click",()=>{
+      dele(ele,i)
+    })
+
     ekaurdiv=document.createElement("div")
     ekaurdiv.setAttribute("id","botum")
   
@@ -53,11 +60,17 @@ function displaycart(jhola) {
   
     ekaurdiv.append(i,sp)
   
-    divs.append(img,h,p,indiv,ekaurdiv)
+    divs.append(img,h,p,indiv,btn,ekaurdiv)
   
     document.querySelector(".bs").append(divs)
   })
    
+}
+
+function dele(ele,i){
+  jhola.splice(i,1)
+  localStorage.setItem("innercart",JSON.stringify(jhola))
+  displaycart(jhola)
 }
 
 // document.querySelector("#total>button").addEventListener("click",() => {
@@ -85,3 +98,22 @@ function displaycart(jhola) {
 function openPopup(){
   document.querySelector("#paypal").style.display="block";
 }
+
+let paaskey;
+    document.querySelector("form").addEventListener("submit", my)
+
+    function my(e) {
+        e.preventDefault()
+        let naam = document.querySelector("#naam").value;
+        let num = document.querySelector("#num").value;
+        let cvv = document.querySelector("#cvv").value;
+        let exp = document.querySelector("#exp").value;
+
+        if (naam == "" || num == "" || cvv == "" || exp == "") {
+            alert("Please fill All the details")
+        }
+        else {
+          alert("Payment Successfull \n THANKYOU!!!")
+            location.href="Maindata.html"
+        }
+    }

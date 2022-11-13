@@ -33,7 +33,7 @@ function display(data){
         img=document.createElement("img")
         img.setAttribute("src",e.img)
         img.addEventListener("click",() => {
-            filer(e)
+            location.href="Maindata.html"
         })
 
         h3=document.createElement("h3")
@@ -44,6 +44,7 @@ function display(data){
 
     })
 }
+
 
 
 // let cartitem=JSON.parse(localStorage.getItem("cartmai"))||[]
