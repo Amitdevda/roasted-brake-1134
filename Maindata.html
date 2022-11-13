@@ -31,20 +31,23 @@
         </div>
     </div>
     <div id="nav2">
-        <img width="90px" src="img/logo.png"
+        <img id="lo" src="img/logo.png"
             alt="logo">
-        <input oninput="search()" type="text" placeholder="Search here"/>
-        <div>
-            <img src="https://www.licious.in/img/rebranding/category-dropdown-icon.svg" alt="cat">
-            <p>Categories</p>
+        <input id="se" oninput="Search()" type="text" placeholder="Search for any delicious product">
+        
+
+        <div class="cat">
+            <a href="Maindata.html"><img class="logoimg" src="https://www.licious.in/img/rebranding/category-dropdown-icon.svg" alt="cat"></a>
+              <span>Categories</span>
         </div>
-        <div>
-            <img src="https://cdn-icons-png.flaticon.com/128/1077/1077012.png" alt="login">
-            <p>Login</p>
+        <div class="cat">
+            <a href="login.html"><img class="logoimg" src="https://www.licious.in/img/rebranding/profile_icon.svg" alt="login"></a>
+            
+            <span>Login</span>
         </div>
-        <div>
-            <img src="https://cdn-icons-png.flaticon.com/128/891/891462.png" alt="Cart">
-            <p>Cart</p>
+        <div class="cat">
+         <a href="cart.html"> <img class="logoimg" src="https://www.licious.in/img/rebranding/cart_icon.svg" alt="Cart"></a>
+            <span>Cart</span>
         </div>
     </div>
     <div class="bs">
@@ -82,7 +85,7 @@ document.querySelector(".bs").innerHTML=null;
 data.forEach((ele,i) => {
 
   divs=document.createElement("div")
-
+  let hr = document.createElement("hr")
   idd=document.createElement("p")
   idd.innerText=ele.idd
 
@@ -123,13 +126,13 @@ data.forEach((ele,i) => {
 
   ekaurdiv.append(i,sp)
 
-  divs.append(img,h,p,indiv,ekaurdiv)
+  divs.append(img,h,p,indiv,hr,ekaurdiv)
 
   document.querySelector(".bs").append(divs)
   
 
 })
- 
+ localStorage.setItem("bigdata",JSON.stringify(bag))
 }
 
 function cartalert(ele){

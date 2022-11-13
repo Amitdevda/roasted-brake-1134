@@ -46,78 +46,79 @@ function display(data){
 }
 
 
-let cartitem=JSON.parse(localStorage.getItem("cartmai"))||[]
-// Best seller section
-url="https://636c099fad62451f9fc24305.mockapi.io/fpd"
-fetch(url).then((res) => res.json()).then((out) => { displayCard(out)}).catch((err) => alert(err));
+// let cartitem=JSON.parse(localStorage.getItem("cartmai"))||[]
+// // Best seller section
+// url="https://636c099fad62451f9fc24305.mockapi.io/fpd"
+// fetch(url).then((res) => res.json()).then((out) => { displayCard(out)}).catch((err) => alert(err));
 
-function displayCard(data) {
+// function displayCard(data) {
 
-    document.querySelector(".bs").innerHTML=null;
+//     document.querySelector(".bs").innerHTML=null;
  
-    data.forEach((ele,i) => {
+//     data.forEach((ele,i) => {
 
-      divs=document.createElement("div")
+//       divs=document.createElement("div")
 
-      id=document.createElement("p")
-      id.innerText=ele.idd
+//       id=document.createElement("p")
+//       id.innerText=ele.idd
 
-      img=document.createElement("img")
-      img.setAttribute("src",ele.img)
+//       img=document.createElement("img")
+//       img.setAttribute("src",ele.img)
 
-      h=document.createElement("h2")
-      h.innerText= ele.name;
+//       h=document.createElement("h2")
+//       h.innerText= ele.name;
 
-      p=document.createElement("p")
-      p.innerText=ele.p;
+//       p=document.createElement("p")
+//       p.innerText=ele.p;
 
-      indiv=document.createElement("div")
-      indiv.setAttribute("id","indiv")
+//       indiv=document.createElement("div")
+//       indiv.setAttribute("id","indiv")
       
-      h4=document.createElement("h3")
-      h4.innerText="MRP:-"+ele.rate
+//       h4=document.createElement("h3")
+//       h4.innerText="MRP:-"+ele.rate
 
-      btn=document.createElement("button")
-      btn.innerText="Add To Cart"
-      btn.setAttribute("id","cartbtn")
-      btn.addEventListener("click",() => {
-        cartalert(ele);
+//       btn=document.createElement("button")
+//       btn.innerText="Add To Cart"
+//       btn.setAttribute("id","cartbtn")
+//       btn.addEventListener("click",() => {
+//         cartalert(ele);
        
-      })
+//       })
+//      let hr = document.createElement("hr")
 
-      ekaurdiv=document.createElement("div")
-      ekaurdiv.setAttribute("id","botum")
-
-      i=document.createElement("img")
-      i.setAttribute("src",ele.ico)
-      i.setAttribute("id","scooter")
+//       ekaurdiv=document.createElement("div")
+//       ekaurdiv.setAttribute("id","botum")
+      
+//       i=document.createElement("img")
+//       i.setAttribute("src",ele.ico)
+//       i.setAttribute("id","scooter")
         
-      sp=document.createElement("span")
-      sp.innerText="Today in 90 min"
+//       sp=document.createElement("span")
+//       sp.innerText="Today in 9 min"
 
-      indiv.append(h4, btn)
+//       indiv.append(h4, btn)
 
-      ekaurdiv.append(i,sp)
+//       ekaurdiv.append(i,sp)
 
-      divs.append(img,h,p,indiv,ekaurdiv)
+//       divs.append(img,h,p,indiv,hr,ekaurdiv)
 
-      document.querySelector(".bs").append(divs)
-    })
+//       document.querySelector(".bs").append(divs)
+//     })
     
-}
+// }
 
-function cartalert(ele,i){
-    let flag=false;
-    for(i=0;i<cartitem.length;i++){
-        if(ele.idd==cartitem[i].idd){
-          flag=true;
-        }
-    }if(flag==true){
-        alert("Item is already in Cart")
-    }else{
-        cartitem.push(ele)
-        localStorage.setItem("cartmai",JSON.stringify(cartitem))
-    }
+// function cartalert(ele,i){
+//     let flag=false;
+//     for(i=0;i<cartitem.length;i++){
+//         if(ele.idd==cartitem[i].idd){
+//           flag=true;
+//         }
+//     }if(flag==true){
+//         alert("Item is already in Cart")
+//     }else{
+//         cartitem.push(ele)
+//         localStorage.setItem("cartmai",JSON.stringify(cartitem))
+//     }
 
-}
+// }
 

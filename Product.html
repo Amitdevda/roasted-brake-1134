@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product</title>
+    <link rel="stylesheet" href="Delicious.css">
+</head>
+<body>
+    <div class="parent">
+    <form action="">
+        <label for="">Product_Name</label>
+        <input id="name" type="text" placeholder="Enter name here">
+        <label for="">Product-ID </label>
+        <input id="id" type="number" maxlength="3">
+        <label for="">Product-Description</label>
+        <input id="des" type="text" placeholder="Description Here">
+        <label for="">Product-Img url</label>
+        <input id="url" type="text" placeholder="URL Here">
+        <label for="">Product-price</label>
+        <input id="rate" type="number" placeholder="Price Here">
+        <input type="submit" value="Submit">
+    </form>
+    <!-- <div class="recent">
+      2
+    </div> -->
+</div>
+</body>
+</html>
+<script>
+    let arr=JSON.parse(localStorage.getItem("bigdata"))
+ 
+  form=document.querySelector("form")
+  form.addEventListener("submit",(e) =>{
+    e.preventDefault()
+    let obj={
+        n:form.name.value,
+        id:form.id.value,
+        desc:form.des.value,
+        img:form.url.value,
+        pr:form.rate.value,
+
+    }
+    display(obj)
+    arr.push(obj)
+    localStorage.setItem("bigdata",JSON.stringify(arr))
+  })
+//   function display(data){
+//     console.log(obj)
+//     data.forEach((ele,i) =>{
+
+//         div=document.createElement("div")
+
+//         h=document.createElement("h3")
+//         h.innerText = ele.n;
+
+//         p1=document.createElement("p")
+//         p1.innerText = ele.id;
+
+//         p2=document.createElement("p")
+//         p2.innerText = ele.desc;
+
+//         im= document.createElement("img")
+//         im.setAttribute("src", ele.img)
+
+//         pri=document.createElement("p")
+//         pri.innerText= ele.pr;
+
+//         div.append(h,p2,im,pri)
+//         document.querySelector("#recent").append(div)
+//     })
+//   }
+ 
+ 
+</script>
