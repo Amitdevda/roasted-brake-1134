@@ -137,3 +137,13 @@
 </html>
 
 <script src="frontpage.js"></script>
+<script>
+    
+    url="https://636c099fad62451f9fc24305.mockapi.io/fpd"
+    fetch(url)
+    .then((res) => res.json())
+    .then((val) => {
+         localStorage.setItem("maindata",JSON.stringify(val))
+    })
+    .catch((err) => alert("err"+err))
+</script>

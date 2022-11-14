@@ -50,13 +50,8 @@
 
 <script>
 
-    let bag=[]
-    car=localStorage.getItem("innercart")
-
-    url="https://636c099fad62451f9fc24305.mockapi.io/fpd"
-    fetch(url).then((res) => res.json()).then((val) => {bag=val;displayHere(bag)}).catch((err) => alert("err"+err))
-    
-    
+    let bag=JSON.parse(localStorage.getItem("maindata"))||[]
+    displayHere(bag) 
     
     function Search() {
         
@@ -113,7 +108,7 @@ data.forEach((ele,i) => {
   i.setAttribute("id","scooter")
     
   sp=document.createElement("span")
-  sp.innerText="Today in 90 min"
+  sp.innerText="Today in 9 min"
 
   indiv.append(h4, btn)
 
@@ -125,7 +120,7 @@ data.forEach((ele,i) => {
   
 
 })
- localStorage.setItem("bigdata",JSON.stringify(bag))
+//  localStorage.setItem("bigdata",JSON.stringify(bag))
 }
 
 let cartwo = JSON.parse(localStorage.getItem("innercart")) || []
